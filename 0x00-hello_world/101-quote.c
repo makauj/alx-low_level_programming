@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 /**
  * main - Code goes here
@@ -10,15 +11,8 @@
  *
  * Add length of the string as the final arguement
  */
-int main(void) /* Abnormal exit, non-zero return */
+int main(void)
 {
-	/**
-	 * use write in place of printf or puts
-	 *
-	 * String is 59 characters long
-	 *
-	 * Exit special characters
-	 */
 	write(2, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 59);
 	return (1);
 }

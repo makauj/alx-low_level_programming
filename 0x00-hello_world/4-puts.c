@@ -1,11 +1,13 @@
 #include <stdio.h>
 
 /**
- * Hello world but better
+ * main - Entry point
  *
+ * Return: null
  */
-int main(void)
+int main(void) /* Main: start of the code */
 {
+	/* Exit special character in text */
 	puts("\"Programming is like building a multilingual puzzle");
-	return (0);
+	return (0); /* Return null */
 }

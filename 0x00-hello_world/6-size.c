@@ -8,7 +8,8 @@
 int main(void)
 {
 	/**
-	 * Use sizeof(type) and %lu to find sizes of types */
+	 * Use sizeof(type) and %lu to find sizes of types
+	 */
 	printf("Size of a char: %lu bytes\n", sizeof(char));
 	printf("Size of an int: %lu bytes\n", sizeof(int));
 	printf("Size of a long int: %lu bytes\n", sizeof(long));

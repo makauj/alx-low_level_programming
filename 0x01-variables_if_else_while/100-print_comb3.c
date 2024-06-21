@@ -19,10 +19,6 @@ int main(void)
 			putchar(j + '0');
 			if (j != '8' || j != '9')
 			{
-				putchar('\n');
-			}
-			else
-			{
 				putchar(',');
 				putchar(' ');
 			}

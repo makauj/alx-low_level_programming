@@ -7,17 +7,17 @@
  */
 int main(void)
 {
-        int c;
+	int c;
 	int b;
 
-        for (c = 'a'; c <= 'z'; ++c)
-        {
-                putchar(c);
-        }
+	for (c = 'a'; c <= 'z'; ++c)
+	{
+		putchar(c);
+	}
 	for (b = 'A'; b <= 'Z'; ++b)
 	{
 		putchar(b);
 	}
-        putchar("\n");
-        return (0);
+	putchar("\n");
+	return (0);
 }

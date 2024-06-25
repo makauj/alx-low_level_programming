@@ -7,6 +7,14 @@
  */
 int main(void)
 {
-	printf("_putchar\n");
+	char p[] = "_putchar";
+	int n = 0;
+
+	while (p[n] != '\0')
+	{
+		putchar(p[n]);
+		n++;
+	}
+	putchar('\n');
 	return (0);
 }

@@ -9,6 +9,7 @@
 void print_number(int n)
 {
 	int num, div, digit;
+
 	if (n < 0)
 	{
 		_putchar('-');
@@ -23,7 +24,7 @@ void print_number(int n)
 	{
 		div *= 10;
 	}
-	
+
 	while (div > 0)
 	{
 		digit = num / div;

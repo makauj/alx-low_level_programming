@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_diangonal - function prints a straight line int the terminal
+ * print_diagonal - function prints a diagonal line int the terminal
  * @n: number of times _ should be printed
  * Return: null
  */

@@ -13,13 +13,14 @@ int main(void)
 
 	n = 612852475143;
 
-	for (j = 2; n < j; j++)
+	for (j = 2; n > j; j++)
 	{
 		while (n % j == 0)
 		{
 			n = n / j;
 		}
 	}
-	printf("%lu\n", j);
+	printf("%lu", n);
+	putchar('\n');
 	return (0);
 }

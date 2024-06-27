@@ -13,7 +13,6 @@ void print_square(int size)
 	if (size <= 0)
 	{
 		_putchar('\n');
-		return (0);
 	}
 	for (c = 0; c < size; c++)
 	{

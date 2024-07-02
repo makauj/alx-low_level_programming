@@ -24,13 +24,6 @@ int _atoi(char *s)
 		else if (*s >= '0' && *s <= '9')
 		{
 			fn = 1;
-			if (r > (INT_MAX - (*s- '0')) / 10)
-			{
-				if (sign == 1)
-					return INT_MAX;
-				else
-					return INT_MAX;
-			}
 			r = r * 10 + (*s - '0');
 		}
 		else if (fn)

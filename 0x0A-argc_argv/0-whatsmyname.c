@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * renameMe - main function
+ * main - main function
  * @argc: number of command line arguements
  * @argv: An array containing the program command line arguments
  * Return: null

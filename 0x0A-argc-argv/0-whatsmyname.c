@@ -11,7 +11,14 @@ int main(int argc, char *argv[])
 {
 	if (argc > 0)
 	{
-		printf("%s\n", argv[0]);
+		char *i = argv[0];
+
+		while (*i != '\0')
+		{
+			_putchar(*i);
+			i++;
+		}
+		_putchar('\n');
 	}
 	return (0);
 }

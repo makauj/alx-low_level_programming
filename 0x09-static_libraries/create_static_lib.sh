@@ -1,4 +1,3 @@
 #!bin/bash
-set -e
-gcc -c -Wall *.c
+gcc -c *.c
 ar rcs liball.a *.o

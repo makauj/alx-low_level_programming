@@ -13,5 +13,9 @@ int *array_range(int min, int max);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void simple_print_buffer(char *buffer, unsigned int size);
 int main(int argc, char *argv[]);
+int _putchar(char c);
+void init(char *str, int l);
+int check_for_digits(char **av);
+char *mul(char n, char *num, int num_index, char *dest, int dest_index);
 
 #endif

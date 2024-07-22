@@ -23,7 +23,6 @@ void init_dog(dog_t *d, char *name, float age, char *owner)
 }
 /**
  * new_dog - main function
- * @d: pointer to the struct to be initialized
  * @name: pointer to the name of the dog
  * @age: age of the dog
  * @owner: pointer to the name of the dog's owner
@@ -35,16 +34,21 @@ void init_dog(dog_t *d, char *name, float age, char *owner)
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d = malloc(sizeof(dog_t));
+
 	if (d == NULL)
 		return (NULL);
+
 	d->name = malloc(strlen(name) + 1);
+
 	if (d->name == NULL)
 	{
 		free(d);
-		return(NULL);
+		return (NULL);
 	}
 	strcpy(d->name, name);
+
 	d->owner = malloc(strlen(owner) + 1);
+
 	if (d->owner == NULL)
 	{
 		free(d->name);

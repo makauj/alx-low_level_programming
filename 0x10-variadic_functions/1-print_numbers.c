@@ -1,9 +1,12 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers -
- * @seperator: string between numbers
+ * print_numbers - Function to print numbers
+ * @separator: string between numbers
  * @n: number of integers passed to the function
+ *
+ * Description: This is a variadic function that prints numbers
+ * with a comma and a space between them.
  *
  * Return: 0
  */

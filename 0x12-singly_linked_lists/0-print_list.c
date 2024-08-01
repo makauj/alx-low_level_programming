@@ -1,10 +1,10 @@
 #include "lists.h"
 
 /**
- * print_list - function that prints all the elements of a list
+ * print_list - function that prints all the elements in a linked list
  * @h: pointer to the head
  *
- * Return: number of nodes
+ * Return: number of nodes (count)
  */
 
 size_t print_list(const list_t *h)
@@ -42,7 +42,7 @@ size_t print_list(const list_t *h)
 }
 
 /**
- * print_number - function to print an unsigned integer
+ * print_number - function to print an unsigned int
  * @n: the number to be printed
  */
 void print_number(unsigned int n)

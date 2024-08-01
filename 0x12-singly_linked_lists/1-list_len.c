@@ -26,7 +26,7 @@ size_t list_len(const list_t *h)
 
 void print_number(unsigned int n)
 {
-    if (n / 10)
-        print_number(n / 10);
-    _putchar((n % 10) + '0');
+	if (n / 10)
+		print_number(n / 10);
+	_putchar((n % 10) + '0');
 }

@@ -12,6 +12,7 @@ size_t print_list(const list_t *h)
 	size_t count = 0;
 	const char *nil_str = "(nil)";
 	unsigned int i;
+	int l, s;
 
 	while (h != NULL)
 	{
@@ -24,14 +25,16 @@ size_t print_list(const list_t *h)
 		{
 			for (i = 0; nil_str[i] != '\0'; i++)
 			{
-				putchar(nil_str[i]);
+				l = nil_str[i];
+				putchar(l);
 			}
 		}
 		else
 		{
 			for (i = 0; i < h->len; i++)
 			{
-				putchar(h->str[i]);
+				s = h->str[i];
+				putchar(s);
 			}
 		}
 		putchar('\n');
@@ -42,7 +45,7 @@ size_t print_list(const list_t *h)
 }
 
 /**
- * print_number - function to print an unsigned int
+ * print_number - function to print a number
  * @n: the number to be printed
  */
 void print_number(unsigned int n)

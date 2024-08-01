@@ -19,7 +19,7 @@ list_t *add_node_end(list_t **head, const char *str)
 		return (NULL);
 	}
 
-	new_node->str = strdup(str);
+	new_str = strdup(str);
 	if (new_str == NULL)
 	{
 		free(new_node);
@@ -37,7 +37,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	else
 	{
 		temp = *head;
-		while (temp-> != NULL)
+		while (temp->next != NULL)
 		{
 			temp = temp->next;
 		}

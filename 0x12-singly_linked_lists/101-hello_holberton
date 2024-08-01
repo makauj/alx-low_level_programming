@@ -8,14 +8,14 @@ extern printf
 
 _start:
 	; Set up the arguments for printf
-	; printf("Hello, Holberton\n")
 	mov rdi, hello     ; The first argument to printf is the format string
 	xor rax, rax       ; Clear rax register (required by the calling convention)
+	call printf	   ; Call printf
 
 	; Call printf
 	call printf
 
 	; Exit the program
-	mov rax, 60        ; syscall number for exit
+	mov rax, 60        ; syscall number for exit (60 for x86_64 Linux)
 	xor rdi, rdi       ; exit code 0
 	syscall            ; invoke system call

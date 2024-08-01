@@ -1,11 +1,11 @@
 #include "lists.h"
 
 /**
- * add_node - function to add a new node to a linked list
- * @head: pointer to a pointer to the head of the list
+ * add_node - function that adds a new node to a linked list
+ * @head: pointer to a pointer to the head
  * @str: string to be added to the list
  *
- * Return: pointer to the new node
+ * Return: pointer to the new node else NULL
  */                                                                                                   
 list_t *add_node_end(list_t **head, const char *str)
 {

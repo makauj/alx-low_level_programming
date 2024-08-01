@@ -38,6 +38,7 @@ size_t print_list(const list_t *h)
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new_node = (list_t *)malloc(sizeof(list_t));
+
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Failed to allocate memory for new node.\n");

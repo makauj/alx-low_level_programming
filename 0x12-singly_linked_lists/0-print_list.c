@@ -10,16 +10,23 @@
 size_t print_list(const list_t *h)
 {
 	size_t count = 0;
+	char buffer[16];
+	int len = h->len;
 
 	while (h != NULL)
 	{
 		if (h->str == NULL)
 		{
-		printf("[0] (nil)\n");
+			write(STDOUT_FILENO, "[0] (nil)")
 		}
 		else
 		{
-			printf("[%u] %s\n", h->len, h->str);
+			itoa(h->len, buffer, 10);
+			write(STDOUT_FILENO, "[", 1);
+			write(STDOUT_FILENO, buffer, strlen(buffer));
+			write(STDOUT_FILENO, "] ", 2);
+			write(STDOUT_FILENO, h->str, h->len);
+			write(STDOUT_FILENO, "\n", 1);
 		}
 		count++;
 		h = h->next;
@@ -41,7 +48,7 @@ list_t *add_node(list_t **head, const char *str)
 
 	if (new_node == NULL)
 	{
-		fprintf(stderr, "Failed to allocate memory for new node.\n");
+		write(STDERR_FILENO, "Failed to allocate memory for new node.\n");
 		exit(1);
 	}
 
@@ -49,7 +56,7 @@ list_t *add_node(list_t **head, const char *str)
 	if (new_node->str == NULL)
 	{
 		free(new_node);
-		fprintf(stderr, "Failed to allocate memory for new node string.\n");
+		write(STDERR_FILENO, "Failed to allocate memory for new node string.\n");
 		exit(1);
 	}
 

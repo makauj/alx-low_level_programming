@@ -1,12 +1,12 @@
 #include "lists.h"
 
 /**
- * add_node - function to add a new node to a linked list
- * @head: pointer to a pointer to the head of the list
+ * add_node_end - function that adds a new node to the end of a linked list
+ * @head: pointer to a pointer to the head
  * @str: string to be added to the list
  *
- * Return: pointer to the new node
- */                                                                                                   
+ * Return: pointer to the new node else NULL
+ */
 list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *new_node;
@@ -19,7 +19,7 @@ list_t *add_node_end(list_t **head, const char *str)
 		return (NULL);
 	}
 
-	new_node->str = strdup(str);
+	new_str = strdup(str);
 	if (new_str == NULL)
 	{
 		free(new_node);
@@ -37,7 +37,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	else
 	{
 		temp = *head;
-		while (temp-> != NULL)
+		while (temp->next != NULL)
 		{
 			temp = temp->next;
 		}

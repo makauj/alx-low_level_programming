@@ -1,6 +1,5 @@
 Sure! Here's a comprehensive `README.md` for your GitHub repository, covering the functions and tasks related to handling linked lists in C.
 
-```markdown
 # Linked Lists in C
 
 This repository contains various functions to manipulate `listint_t` linked lists in C. These functions cover creating, adding, freeing, reversing, and detecting loops in linked lists.

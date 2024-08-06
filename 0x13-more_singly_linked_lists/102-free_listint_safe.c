@@ -10,7 +10,7 @@
 size_t free_listint_safe(listint_t **h)
 {
 	size_t count = 0;
-	listint_t *temp, *new_node;
+	listint_t *new_node;
 
 	if (h == NULL || *h == NULL)
 	{

@@ -2,7 +2,7 @@
 
 /**
  * listint_len - function to find the length of a list
- * @h: head
+ * @h: pointer to the head
  *
  * Return: number of nodes
  */

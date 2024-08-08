@@ -10,25 +10,25 @@
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int dec = 0;
-	unsigned int rem = 1;
-	int i, len = 0;
+	unsigned int i = 0;
 
 	if (b == NULL)
 	{
 		return (0);
 	}
-	len = strlen(b);
-	for (i = len - 1; i >= 0; i--)
+
+	while (b[i] != 0)
 	{
 		if (b[i] != '0'&& b[i] != '1')
 		{
 			return (0);
 		}
-		if (b[i] == '1')
+		dec <<= 1;
+		if (b[i] & 1)
 		{
-			dec += rem;
+			dec += 1;
 		}
-		rem *= 2;
+		i += 1;
 	}
 
 	return (dec);

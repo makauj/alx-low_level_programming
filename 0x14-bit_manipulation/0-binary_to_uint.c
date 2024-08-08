@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * binary_to_unit - function to convert binary number to decimal
+ * binary_to_uint - function to convert binary number to decimal
  * @b: pointer to the binary number
  *
  * Return: converted decimal number as unsigned int.

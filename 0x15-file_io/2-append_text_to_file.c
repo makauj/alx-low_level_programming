@@ -50,6 +50,7 @@ int append_text_to_file(const char *filename, char *text_content)
 int _strlen(const char *s)
 {
 	int len = 0;
+
 	while (s[len] != '\0')
 		len++;
 	return (len);

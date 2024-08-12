@@ -1,112 +1,96 @@
 #include "main.h"
 
-#define BUFFER_SIZE 1024
+char *create_buffer(char *file);
+void close_file(int fd);
 
 /**
- * error_exit - prints an error message and exits
- * @code: Exit code
- * @message: message to print
- * @arg: Additional arguments
+ * create_buffer - Allocates 1024 bytes for a buffer.
+ * @file: The name of the file buffer is storing chars for.
+ *
+ * Return: A pointer to the newly-allocated buffer.
  */
-
-void error_exit(const char *message, int code, const char *arg)
+char *create_buffer(char *file)
 {
-	dprintf(STDERR_FILENO, message, arg);
-	exit(code);
+	char *buffer;
+
+	buffer = malloc(sizeof(char) * 1024);
+
+	if (buffer == NULL)
+	{
+		dprintf(STDERR_FILENO,
+			"Error: Can't write to %s\n", file);
+		exit(99);
+	}
+
+	return (buffer);
 }
 
 /**
- * main - check the code for Holberton School students.
- *
- * @argc: number of arguments.
- * @argv: arguments vector.
- *
- * Return: Always 0.
+ * close_file - Closes file descriptors.
+ * @fd: The file descriptor to be closed.
  */
+void close_file(int fd)
+{
+	int c;
 
+	c = close(fd);
+
+	if (c == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+}
+
+/**
+ * main - Copies the contents of a file to another file.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
+ *
+ * Return: 0 on success.
+ */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
-	ssize_t bytes_read, bytes_written;
-	char buffer[BUFFER_SIZE];
+	int file_from, file_to, r, w;
+	char *buffer;
 
 	if (argc != 3)
 	{
-		error_exit(97, "Usage: cp file_from file_to", NULL);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
 	}
-	file_from = open_file(argv[1], O_RDONLY, 0);
-	file_to = open_file(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
-	copy_file(file_from, file_to);
+	buffer = create_buffer(argv[2]);
+	file_from = open(argv[1], O_RDONLY);
+	r = read(file_from, buffer, 1024);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
+	do {
+		if (file_from == -1 || r == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't read from file %s\n", argv[1]);
+			free(buffer);
+			exit(98);
+		}
+
+		w = write(file_to, buffer, r);
+		if (file_to == -1 || w == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't write to %s\n", argv[2]);
+			free(buffer);
+			exit(99);
+		}
+
+		r = read(file_from, buffer, 1024);
+		file_to = open(argv[2], O_WRONLY | O_APPEND);
+
+	} while (r > 0);
+
+	free(buffer);
 	close_file(file_from);
 	close_file(file_to);
 
 	return (0);
 }
-
-/**
- * open_file - Opens a file and handles errors.
- * @filename: The name of the file to open.
- * @flags: The flags to use when opening the file.
- * @mode: The mode to use if the file is created (for output file).
- *
- * Return: The file descriptor on success, or exits on failure.
- */
-int open_file(const char *filename, int flags, mode_t mode)
-{
-	int fd;
-
-	fd = open(filename, flags, mode);
-	if (fd == -1)
-	{
-	if (flags & O_WRONLY)
-		error_exit(99, "Error: Can't write to %s\n", filename);
-	else
-		error_exit(98, "Error: Can't read from file %s\n", filename);
-	}
-	return (fd);
-}
-
-/**
- * close_file - Closes a file descriptor and handles errors.
- * @fd: The file descriptor to close.
- */
-void close_file(int fd)
-{
-	if (close(fd) == -1)
-	{
-		error_exit(100, "Error: Can't close fd %d\n", fd);
-	}
-}
-
-/**
- * copy_file - Copies content from one file to another.
- * @file_from: The file descriptor of the source file.
- * @file_to: The file descriptor of the destination file.
- */
-void copy_file(int file_from, int file_to)
-{
-	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read, bytes_written;
-
-	while ((bytes_read = read(file_from, buffer, BUFFER_SIZE)) > 0)
-	{
-		bytes_written = write(file_to, buffer, bytes_read);
-		if (bytes_written == -1)
-		{
-			close_file(file_from);
-			close_file(file_to);
-			error_exit(99, "Error: Can't write to file\n", NULL);
-		}
-	}
-
-	if (bytes_read == -1)
-	{
-		close_file(file_from);
-		close_file(file_to);
-		error_exit(98, "Error: Can't read from file\n", NULL);
-	}
-}
-
-

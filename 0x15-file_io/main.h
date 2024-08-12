@@ -21,5 +21,6 @@ void error_exit(int code, const char *message, const char *arg);
 int open_file(const char *filename, int flags, mode_t mode);
 void close_file(int fd);
 void copy_file(int file_from, int file_to);
+char *create_buffer(char *file);
 
 #endif /* MAIN_H */

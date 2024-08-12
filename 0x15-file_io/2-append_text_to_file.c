@@ -12,6 +12,7 @@ int append_text_to_file(const char *filename, char *text_content)
 {
 	int fd;
 	ssize_t f_write;
+	size_t len;
 
 	if (!filename)
 	{
@@ -25,11 +26,10 @@ int append_text_to_file(const char *filename, char *text_content)
 	}
 	if (!text_content)
 	{
-		close(fd);
-		return (1);
+		text_content = "";
 	}
-
-	f_write = write(fd, text_content, _strlen(text_content));
+	len = _strlen(text_content);
+	f_write = write(fd, text_content, len);
 	if (f_write == -1)
 	{
 		close(fd);
@@ -38,4 +38,19 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	close(fd);
 	return (1);
+}
+
+/**
+ * _strlen - function to return the length of a string
+ * @s: pointer to the string
+ *
+ * Return: length of the string s
+ */
+
+int _strlen(const char *s)
+{
+	int len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }

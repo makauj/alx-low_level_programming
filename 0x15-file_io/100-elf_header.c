@@ -1,5 +1,9 @@
 #include <elf.h>
-#include <main.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdint.h>
 /**
  * print_error - function to print errors
  * @msg: error message

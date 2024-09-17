@@ -324,5 +324,3 @@ int main(int argc, char *argv[])
 - The program reads the ELF header from a file and prints its contents in a human-readable format.
 - Each function in the code handles a specific part of the ELF header or file operations.
 - Error handling ensures that the program exits with an appropriate message if something goes wrong (e.g., file not found, memory allocation failure).
-
-I hope this helps clarify how the code works! If you have any more questions or need further explanation on any part, feel free to ask.

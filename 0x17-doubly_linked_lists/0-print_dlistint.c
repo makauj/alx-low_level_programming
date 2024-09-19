@@ -49,10 +49,10 @@ int int_to_str(int num, char *buffer)
 		num = -num;
 	}
 
-	do{
+	do {
 		buffer[len++] = (num % 10) + '0';
 		num /= 10;
-	}while (num > 0);
+	} while (num > 0);
 
 	if (is_negative)
 	{

@@ -1,6 +1,7 @@
-nclude <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stddef.h>
 
 /**
  * f4 - finds the biggest number

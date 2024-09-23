@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -O /tmp/gm https://github.com/ShagizMan/alx-low_level_programming/blob/master/0x18-dynamic_libraries/gm
-export LD_PRELOAD=/tmp/gm
+wget -O /tmp https://github.com/makauj/alx-low_level_programming/blob/master/0x18-dynamic_libraries/libhack.so
+export LD_PRELOAD=/tmp/libhack.so

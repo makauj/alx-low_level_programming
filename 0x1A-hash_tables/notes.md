@@ -31,3 +31,22 @@ chained_hash_insert(T, x)
 chianed_hash-Delete(T, x)
     T[h(x.key)] = NIL
 ```
+
+#### 2. Open Addressing
+In this method, we don't store multiple elements into the same slot. Each slot only stores one key or left `NIL`.
+Different techniques used in open addressing one:
+
+***i. Linear Probing***
+Collisions resolved by checking the next slot.
+`h(k, i) = (h'(k) + i) mod m`
+where
+    - `i = {0, 1, ... .}`
+    - `h'(k)` is a new hash function
+
+If a collision occurs at `h(k, 0)`, then `h(k, 1)` is checked. In this way, the value of `i` is incremented linearly.
+The problem with linear probing is that a cluster of adjacent slots is filled. When insert a new element, the entire cluster must be traversed. This adds to the time required to perform operations on the hash table.
+
+***ii. Quadratic Probing***
+Unlike with `Linear Probing`, the spacing between the slots is increased using:
+
+`h(k, i) = (h'(k)) + c<sub>1</sub>i + c<sub>i</sub>i<sup>2</sup>

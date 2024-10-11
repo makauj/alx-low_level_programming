@@ -6,11 +6,11 @@
  * @key: key
  *
  * Return: value associated with the element or NULL if key is NULL
- */.
+ */
 
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	hash_table_t *array, *tmp;
+	hash_table_t *array, *temp;
 	unsigned long int index;
 
 	if (!key || !ht)
@@ -18,17 +18,17 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		return (NULL);
 	}
 
-	index = key_index((const unsigned char *)key, table->size);
-	array = table->array;
+	index = key_index((const unsigned char *)key, ht->size);
+	array = ht->array;
 
-	tmp = array[index];
-	while (tmp)
+	temp = array[index];
+	while (temp)
 	{
-		if (strcmp(key, tmp->key) == 0)
+		if (strcmp(key, temp->key) == 0)
 		{
-			return (tmp->value);
+			return (temp->value);
 		}
-		tmp = tmp->next;
+		temp = temp->next;
 	}
 	return (NULL);
 }

@@ -8,7 +8,7 @@
  * Return: new node if successful else NULL
  */
 
-has_node_t *add_node(const char *key, const char *value)
+hash_node_t *add_node(const char *key, const char *value)
 {
 	hash_node_t *new_node;
 
@@ -40,18 +40,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (key == NULL || key[0] == '\n')
 		return (0);
-	if (!table || !value)
+	if (!ht || !value)
 		return (0);
 
-	idx = key_index((const unsigned char *)key, table_size);
-	arr = table->arr;
+	idx = key_index((const unsigned char *)key, ht->size);
+	arr = ht->array;
 
 	tmp = arr[idx];
 	while (tmp != NULL)
 	{
 		if (strcmp(key, tmp->key) == 0)
 		{
-			free(tmp->valu);
+			free(tmp->value);
 			tmp->value = strdup(value);
 			return (1);
 		}
@@ -69,7 +69,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		node->next = arr[idx];
 		arr[idx] = node;
 	}
-	else
-		arr[idx];
+
 	return (1);
 }

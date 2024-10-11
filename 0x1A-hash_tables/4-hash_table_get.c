@@ -28,8 +28,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	{
 		while (strcmp(key, temp->key) == 0)
 		{
-			temp = temp->value;
+			return (temp->value);
 		}
+		temp = temp->next;
 	}
-	return ((temp == NULL) ? NULL : temp->value);
+	return (NULL);
 }

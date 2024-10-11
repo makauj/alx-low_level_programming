@@ -34,7 +34,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 shash_node_t *create_shash_node(const char *key, const char *value)
 {
 	shash_node_t *new_node = malloc(sizeof(shash_node_t));
-	
+
 	if (!new_node)
 		return (NULL);
 
@@ -63,7 +63,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	shash_node_t *temp;
 
 	if (!ht || !key || !value)
-		return 0;
+		return (0);
 
 	index = hash_djb2((unsigned char *)key) % ht->size;
 	current = ht->array[index];
@@ -167,6 +167,7 @@ void shash_table_print(const shash_table_t *ht)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *current;
+
 	if (!ht)
 		return;
 
@@ -197,6 +198,7 @@ void shash_table_delete(shash_table_t *ht)
 	while (current)
 	{
 		shash_node_t *temp = current;
+
 		current = current->snext;
 		free(temp->key);
 		free(temp->value);

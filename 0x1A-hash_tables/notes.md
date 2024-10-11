@@ -128,6 +128,12 @@ char *hash_table_get(const hash_table_t *ht, const char *key);
 
 
 #endif /* HASH_TABLES_H */
-
 ```
 
+
+## Sources
+1. (Towards Dev)[https://towardsdev.com/getting-started-with-hash-tables-in-c-a-beginners-guide-88ef312fbb9d]
+2. (Ben Hoyt)[https://benhoyt.com/writings/hash-table-in-c/]
+3. (Geeks for Geeks)[https://www.geeksforgeeks.org/hash-table-data-structure/]
+4. (programiz)[https://www.programiz.com/dsa/hash-table]
+5. (Geeks for Geeks)[https://www.geeksforgeeks.org/implementation-of-hash-table-in-c-using-separate-chaining/]

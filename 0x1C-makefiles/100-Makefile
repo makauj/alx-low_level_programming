@@ -1,0 +1,35 @@
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Source files and object files
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Clean up command
+RM = rm -f
+
+# Special targets that don't represent files
+.PHONY: all clean oclean fclean re
+
+# Default rule (builds the executable)
+all: $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+# Clean the build (removes executables and other temporary files)
+clean:
+	$(RM) *~ $(NAME)
+
+# Clean only object files
+oclean:
+	$(RM) $(OBJ)
+
+# Clean everything (object files and executable)
+fclean: clean oclean
+
+# Rebuild everything from scratch
+re: fclean all
+

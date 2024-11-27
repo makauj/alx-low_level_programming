@@ -14,7 +14,7 @@ NAME = school
 
 # Default rule (builds the executable)
 all: m.h $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
 # Clean the build (removes executables and other temporary files)
 clean:

@@ -9,7 +9,7 @@
  */
 size_t min(size_t a, size_t b)
 {
-	return (a < b ? a : b);
+	return (a <= b ? a : b);
 }
 
 /**
@@ -29,7 +29,7 @@ int jump_search(int *array, size_t size, int value)
 		return (-1);
 
 	/* Calculate jump step using square root of size */
-	step = (size_t)sqrt(size);
+	step = sqrt(size);
 	prev = 0;
 	curr = step;
 

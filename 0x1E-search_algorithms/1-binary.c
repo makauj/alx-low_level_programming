@@ -40,6 +40,7 @@ int binary_search(int *array, size_t size, int value)
 	/* Binary search algorithm */
 	while (left <= right)
 	{
+		printf("Searching in array: ");
 		print_array(array, left, right);
 		/* Calculate middle index */
 		mid = (left + right) / 2;

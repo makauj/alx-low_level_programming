@@ -15,7 +15,7 @@ void print_subarray(int *array, size_t low, size_t high)
 	{
 		printf("%d", array[i]);
 		if (i < high)
-			printf(" ");
+			printf(", ");
 	}
 
 	printf("\n");

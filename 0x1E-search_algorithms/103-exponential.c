@@ -33,6 +33,9 @@ int binary_search_exp(int *array, size_t left, size_t right, int value)
 {
 	size_t mid;
 
+	if (!array)
+		return (-1);
+
 	while (left <= right)
 	{
 		print_array(array, left, right);

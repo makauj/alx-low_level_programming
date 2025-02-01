@@ -1,80 +1,46 @@
 #include "search_algos.h"
 
 /**
- * print_array - prints an array between two indices
- * @array: pointer to the first element of the array
- * @left: starting index
- * @right: ending index
+ * jump_list - searches for a value in a sorted linked list using Jump search
+ * @list: pointer to the head of the linked list
+ * @size: number of nodes in the list
+ * @value: value to search for
+ *
+ * Return: pointer to the first node where value is, or NULL if not found
  */
-void print_array(int *array, size_t left, size_t right)
+listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t i;
+	size_t step, step_size;
+	listint_t *prev, *curr;
 
-	printf("Searching in array: ");
-	for (i = left; i <= right; i++)
+	if (list == NULL || size == 0)
+		return (NULL);
+
+	/* Calculate jump step using square root of size */
+	step_size = (size_t)sqrt(size);
+	prev = list;
+	curr = list;
+	step = 0;
+	while (curr->index < size - 1 && curr->n < value)
 	{
-		printf("%d", array[i]);
-		if (i < right)
-			printf(", ");
+		prev = curr;
+
+		for (step = 0; step < step_size && curr->next; step++)
+			curr = curr->next;
+		printf("Value checked at index [%lu] = [%d]\n",
+				curr->index, curr->n);
 	}
-	printf("\n");
-}
 
-/**
- * binary_recursive - recursively searches for first occurrence of value
- * @array: pointer to the first element of the array
- * @left: left boundary of search
- * @right: right boundary of search
- * @value: value to search for
- *
- * Return: index of first occurrence of value, or -1 if not found
- */
-int binary_recursive(int *array, size_t left, size_t right, int value)
-{
-	size_t mid;
-
-	/* Base case: if boundaries cross */
-	if (left > right)
-		return (-1);
-
-	/* Print current subarray */
-	print_array(array, left, right);
-
-	/* Calculate middle point */
-	mid = left + (right - left) / 2;
-
-	/**
-	 * If mid is 0 or value at mid-1 is different from value,
-	 * and value at mid equals search value, we found first occurrence
-	 */
-	if ((mid == 0 || array[mid - 1] < value) && array[mid] == value)
-		return (mid);
-
-	/**
-	 * If value at mid is greater than or equal to search value,
-	 * search in left subarray to find first occurrence
-	 */
-	if (array[mid] >= value)
-		return (binary_recursive(array, left, mid, value));
-
-	/* Search in right subarray */
-	return (binary_recursive(array, mid + 1, right, value));
-}
-
-/**
- * advanced_binary - searches for first occurrence of a value in a sorted array
- * @array: pointer to the first element of the array
- * @size: number of elements in the array
- * @value: value to search for
- *
- * Return: index of first occurrence of value, or -1 if not found
- */
-int advanced_binary(int *array, size_t size, int value)
-{
-	/* Check if array is NULL or empty */
-	if (array == NULL || size == 0)
-		return (-1);
-
-	/* Call recursive helper function */
-	return (binary_recursive(array, 0, size - 1, value));
+	printf("Value found between indexes [%lu] and [%lu]\n",
+			prev->index, curr->index);
+	/* Linear search in the identified range */
+	while (prev && prev->index <= curr->index)
+	{
+		printf("Value checked at index [%lu] = [%d]\n",
+				prev->index, prev->n);
+		if (prev->n == value)
+			return (prev);
+		prev = prev->next;
+	}
+	return (NULL);
 }
